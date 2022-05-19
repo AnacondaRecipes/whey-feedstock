@@ -1,5 +1,5 @@
 {% set name = "whey" %}
-{% set version = "0.0.21" %}
+{% set version = "0.0.22" %}
 
 package:
   name: {{ name|lower }}
@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/whey-{{ version }}.tar.gz
-  sha256: 1d9f10824e5017a5e1a3231270d92254a56d3a5daa0bb12297824176c7567e83
+  sha256: 339c58b4e12a26fc6c002f9b09c80358cc69cfce6306d2c1371efaa23576819f
 
 build:
   entry_points:
