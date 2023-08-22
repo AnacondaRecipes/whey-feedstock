@@ -1,11 +1,11 @@
-About whey
-==========
+About whey-feedstock
+====================
+
+Feedstock license: [BSD-3-Clause](https://github.com/conda-forge/whey-feedstock/blob/main/LICENSE.txt)
 
 Home: https://github.com/repo-helper/whey
 
 Package license: MIT
-
-Feedstock license: [BSD-3-Clause](https://github.com/conda-forge/whey-feedstock/blob/main/LICENSE.txt)
 
 Summary: A simple Python wheel builder for simple projects.
 
