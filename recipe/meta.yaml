@@ -20,6 +20,7 @@ requirements:
   host:
     - pip
     - python {{ python_min }}
+    - setuptools
   run:
     - attrs >=22.2.0
     - click >=7.1.2
