@@ -43,6 +43,8 @@ requirements:
     - editables >=0.2
     - pyproject-parser >=0.11.0b1
 
+# We can`t enable pytest because conftest uses the coincidence package, which is unavailable on the main channel.
+# The policy states that packages are not specifically built for testing.
 test:
   imports:
     - whey
