@@ -1,0 +1,14 @@
+upload_channels:
+  - sfe1ed40
+
+channels:
+  - https://staging.continuum.io/prefect/fs/apeye-core-feedstock/pr2/3f4bb44
+  - https://staging.continuum.io/prefect/fs/domdf-python-tools-feedstock/pr2/67eced5
+  - https://staging.continuum.io/prefect/fs/mistletoe-feedstock/pr1/18c6136
+  - https://staging.continuum.io/prefect/fs/deprecation-alias-feedstock/pr1/beb3274
+  - https://staging.continuum.io/prefect/fs/handy-archives-feedstock/pr1/1438ea6
+  - https://staging.continuum.io/prefect/fs/dom-toml-feedstock/pr1/d7e6d54
+  - https://staging.continuum.io/prefect/fs/dist-meta-feedstock/pr1/a07f804
+  - https://staging.continuum.io/prefect/fs/consolekit-feedstock/pr1/58b6626
+  - https://staging.continuum.io/prefect/fs/shippinglabel-feedstock/pr1/382cf4f
+  - https://staging.continuum.io/prefect/fs/pyproject-parser-feedstock/pr1/7ab90c0
