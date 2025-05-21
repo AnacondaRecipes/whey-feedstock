@@ -43,7 +43,8 @@ requirements:
 
 # ModuleNotFoundError: No module named 'whey_conda'
 {% set ignore_tests = " --ignore=tests/test_utils.py" %}
-{% set ignore_tests = ignore_tests + " --ignore=tests/test_cli.py" %}
+# BadConfigError: Unknown binary builder 'whey_conda'.
+{% set tests_to_skip = "test_show_builders" %}
 
 test:
   source_files:
@@ -54,7 +55,7 @@ test:
     - pip check
     - python -c "from importlib.metadata import version; assert(version('{{ name }}')=='{{ version }}')"
     - whey --help
-    - pytest -v {{ ignore_tests }} tests
+    - pytest -v {{ ignore_tests }} -k "not {{ tests_to_skip }}" tests
   requires:
     - pip
     - pyproject-examples
