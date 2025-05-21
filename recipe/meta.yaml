@@ -6,11 +6,11 @@ package:
   version: {{ version }}
 
 source:
-  url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/whey-{{ version }}.tar.gz
-  sha256: 97bd9f8dcceeb835e0fdc0e2a89eeba0d566e17f9abbed6ee0003c4b3b356cda
+  url: https://github.com/repo-helper/{{ name }}/archive/refs/tags/v{{ version }}.tar.gz
+  sha256: a9e79ba17423841f14d80802769593c3f9c54f2d60312450b6db98acecdf8a54
 
 build:
-  number: 0
+  number: 1
   entry_points:
     - whey = whey.__main__:main
     - whey_sdist = whey.builder:SDistBuilder
@@ -41,17 +41,27 @@ requirements:
     - editables >=0.2
     - python >=3.6.1
 
-# We can`t enable pytest because conftest uses the coincidence package, which is unavailable on the main channel.
-# The policy states that packages are not specifically built for testing.
+# ModuleNotFoundError: No module named 'whey_conda'
+{% set ignore_tests = " --ignore=tests/test_utils.py" %}
+{% set ignore_tests = ignore_tests + " --ignore=tests/test_cli.py" %}
+
 test:
+  source_files:
+    - tests
   imports:
     - whey
   commands:
     - pip check
     - python -c "from importlib.metadata import version; assert(version('{{ name }}')=='{{ version }}')"
     - whey --help
+    - pytest -v {{ ignore_tests }} tests
   requires:
     - pip
+    - pyproject-examples
+    - pytest >=6.0.0
+    - coincidence >=0.2.0
+    - re-assert >=1.1.0
+    - editables >=0.2
 
 about:
   home: https://github.com/repo-helper/whey

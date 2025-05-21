@@ -1,2 +1,5 @@
 upload_channels:
   - sfe1ed40
+
+channels:
+  - https://staging.continuum.io/prefect/fs/pyproject-examples-feedstock/pr1/4453b4b
