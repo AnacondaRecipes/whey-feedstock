@@ -16,8 +16,7 @@ build:
     - whey_sdist = whey.builder:SDistBuilder
     - whey_wheel = whey.builder:WheelBuilder
   script: {{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
-  skip: True  # [py<37]
-  
+  skip: True  # [py<36]
 
 requirements:
   host:
@@ -41,7 +40,7 @@ requirements:
   run_constrained:
     - docutils >=0.16
     - editables >=0.2
-    - pyproject-parser >=0.11.0b1
+    - python >=3.6.1
 
 # We can`t enable pytest because conftest uses the coincidence package, which is unavailable on the main channel.
 # The policy states that packages are not specifically built for testing.
