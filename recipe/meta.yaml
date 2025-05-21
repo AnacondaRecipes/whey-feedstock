@@ -10,18 +10,22 @@ source:
   sha256: 97bd9f8dcceeb835e0fdc0e2a89eeba0d566e17f9abbed6ee0003c4b3b356cda
 
 build:
+  number: 0
   entry_points:
     - whey = whey.__main__:main
-  noarch: python
-  script: {{ PYTHON }} -m pip install . -vv
-  number: 1
+    - whey_sdist = whey.builder:SDistBuilder
+    - whey_wheel = whey.builder:WheelBuilder
+  script: {{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
+  skip: True  # [py<36]
 
 requirements:
   host:
+    - python
     - pip
-    - python {{ python_min }}
+    - wheel
     - setuptools
   run:
+    - python
     - attrs >=22.2.0
     - click >=7.1.2
     - consolekit >=1.4.1
@@ -32,25 +36,32 @@ requirements:
     - natsort >=7.1.1
     - packaging >=20.9
     - pyproject-parser >=0.11.0
-    - python >={{ python_min }}
     - shippinglabel >=0.16.0
+  run_constrained:
+    - editables >=0.2
+    - python >=3.6.1
 
+# We can`t enable pytest because conftest uses the coincidence package, which is unavailable on the main channel.
+# The policy states that packages are not specifically built for testing.
 test:
   imports:
     - whey
   commands:
     - pip check
+    - python -c "from importlib.metadata import version; assert(version('{{ name }}')=='{{ version }}')"
     - whey --help
   requires:
     - pip
-    - python {{ python_min }}
 
 about:
   home: https://github.com/repo-helper/whey
   summary: A simple Python wheel builder for simple projects.
   license: MIT
+  license_family: MIT
   license_file: LICENSE
-  doc_url: https://whey.readthedocs.io/en/latest
+  description: A simple Python wheel builder for simple projects.
+  doc_url: https://whey.readthedocs.io
+  dev_url: https://github.com/repo-helper/whey
 
 extra:
   recipe-maintainers:
