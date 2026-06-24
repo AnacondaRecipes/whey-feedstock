@@ -10,7 +10,7 @@ source:
   sha256: a9e79ba17423841f14d80802769593c3f9c54f2d60312450b6db98acecdf8a54
 
 build:
-  number: 1
+  number: 2
   entry_points:
     - whey = whey.__main__:main
     - whey_sdist = whey.builder:SDistBuilder
