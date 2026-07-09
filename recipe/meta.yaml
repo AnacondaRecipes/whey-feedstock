@@ -23,7 +23,7 @@ requirements:
     - python
     - pip
     - wheel
-    - setuptools
+    - setuptools !=61.*
   run:
     - python
     - attrs >=22.2.0
