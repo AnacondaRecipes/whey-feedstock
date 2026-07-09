@@ -55,12 +55,16 @@ test:
     - pip check
     - python -c "from importlib.metadata import version; assert(version('{{ name }}')=='{{ version }}')"
     - whey --help
-    - pytest -v {{ ignore_tests }} -k "not {{ tests_to_skip }}" tests
+    # cyclic test dependency (restore test once dependency is in)
+    # whey -> coincidence
+    # coincidence -> whey
+    #- pytest -v {{ ignore_tests }} -k "not {{ tests_to_skip }}" tests
   requires:
     - pip
-    - pyproject-examples
     - pytest >=6.0.0
-    - coincidence >=0.2.0
+    # cyclic test dependency (restore test once dependency is in)
+    #- pyproject-examples
+    #- coincidence >=0.2.0
     - re-assert >=1.1.0
     - editables >=0.2
 
