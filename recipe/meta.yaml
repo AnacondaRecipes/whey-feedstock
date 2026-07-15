@@ -10,7 +10,7 @@ source:
   sha256: a9e79ba17423841f14d80802769593c3f9c54f2d60312450b6db98acecdf8a54
 
 build:
-  number: 2
+  number: 3
   entry_points:
     - whey = whey.__main__:main
     - whey_sdist = whey.builder:SDistBuilder
@@ -56,16 +56,12 @@ test:
     - pip check
     - python -c "from importlib.metadata import version; assert(version('{{ name }}')=='{{ version }}')"
     - whey --help
-    # cyclic test dependency (restore test once dependency is in)
-    # whey -> coincidence
-    # coincidence -> whey
-    #- pytest -v {{ ignore_tests }} -k "not {{ tests_to_skip }}" tests
+    - pytest -v {{ ignore_tests }} -k "not {{ tests_to_skip }}" tests
   requires:
     - pip
     - pytest >=6.0.0
-    # cyclic test dependency (restore test once dependency is in)
-    #- pyproject-examples
-    #- coincidence >=0.2.0
+    - pyproject-examples
+    - coincidence >=0.2.0
     - re-assert >=1.1.0
     - editables >=0.2
 
