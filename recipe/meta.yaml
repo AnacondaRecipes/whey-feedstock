@@ -64,6 +64,12 @@ test:
     - coincidence >=0.2.0
     - re-assert >=1.1.0
     - editables >=0.2
+    # dependencies_invalid_requirement0 tests asserts against an older error message string, where the error
+    # description wording was updated post-v26. affects the following tests:
+    # tests/test_cli.py::test_bad_config_show_traceback[dependencies_invalid_requirement0]
+    # tests/test_config.py::test_parse_config_errors[dependencies_invalid_requirement0]
+    # tests/test_config.py::test_pep621parser_class_errors[dependencies_invalid_requirement0]
+    - packaging <26
 
 about:
   home: https://github.com/repo-helper/whey
